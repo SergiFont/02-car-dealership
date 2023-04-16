@@ -4,24 +4,24 @@ import { Car } from './interfaces/car.interface';
 import { CreateCarDto, UpdateCarDto } from './dto';
 
 
-@Injectable()
+@Injectable() // esto lo convierte en un proveedor
 export class CarsService {
     private cars: Car[] = [
-        {
-            id: uuid(),
-            brand: 'Toyota',
-            model: 'Corolla'
-        },
-        {
-            id: uuid(),
-            brand: 'Honda',
-            model: 'Civic'
-        },
-        {
-            id: uuid(),
-            brand: 'Jeep',
-            model: 'Cherokee'
-        },
+        // {
+        //     id: uuid(),
+        //     brand: 'Toyota',
+        //     model: 'Corolla'
+        // },
+        // {
+        //     id: uuid(),
+        //     brand: 'Honda',
+        //     model: 'Civic'
+        // },
+        // {
+        //     id: uuid(),
+        //     brand: 'Jeep',
+        //     model: 'Cherokee'
+        // },
     ];
 
     findAll() {
@@ -64,6 +64,10 @@ export class CarsService {
     deleteCar( id:string) {
         this.findOneById(id); // si no existe el coche, lanza un error
         this.cars = this.cars.filter(car => car.id !== id); // manera muchísimo mas eficaz de eliminar un elemento de un array
+    }
+
+    fillCarsWithSeedData(cars: Car[]) {
+        this.cars = cars
     }
 }
 
